@@ -26,5 +26,5 @@ This will create a local copy of the repository to work on.
 
 3. Ensure you don't have any local changes and merge the upstream branch
 
-```git checkout main
-git merge upstream/main```
+```git checkout main```
+```git merge upstream/main```

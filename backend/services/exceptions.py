@@ -20,7 +20,13 @@ class UserPermissionException(Exception):
 
 
 class UserRegistrationException(Exception):
-    """EventRegistrationException is raised when a user attempts to register and cannot (i.e., when the email already exists)."""
+    """UserRegistrationException is raised when a user attempts to register and cannot (i.e., when the email already exists)."""
 
     def __init__(self):
-        super().__init__(f"Unable to register user, email already is registered.")
+        super().__init__(f"Unable to register user, email is already registered.")
+
+class ProductRegistrationException(Exception):
+    """ProductRegistrationException is raised when a product is registered and cannot (i.e., when the url already exists)."""
+
+    def __init__(self):
+        super().__init__(f"Unable to register product, url is already registered.")

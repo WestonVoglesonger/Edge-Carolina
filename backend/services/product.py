@@ -7,7 +7,6 @@ from ..services.exceptions import (
     ResourceNotFoundException,
     ProductRegistrationException,
 )
-
 class ProductService:
     """Backend service that enables direct modification of product data."""
 
@@ -22,17 +21,17 @@ class ProductService:
 
     def get_product(self, product_id: int) -> ProductData:
         """Gets one product by an ID."""
-        product_entity = self._session.get(product_id)
-        if user_entity is None:
+        product_entity = self._session.get(ProductEntity, product_id)
+        if product_entity is None:
             raise ResourceNotFoundException("Product does not exist.")
         return product_entity.to_model()
 
     def create_product(self, product: ProductData) -> ProductData:
         """Stores a product in the database."""
-        existing_url = self._session.get(product.id)
-        if existing_url:
+        existing_product = self._session.query(ProductEntity).filter_by(url=product.url).first()
+        if existing_product:
             raise ProductRegistrationException()
-
+            
         new_product = ProductEntity.from_model(product)
         self._session.add(new_product)
         self._session.commit()
@@ -40,7 +39,7 @@ class ProductService:
 
     def update_product(self, product: ProductData) -> ProductData:
         """Modifies one product in the database."""
-        product_entity = self._session.get(product.id)
+        product_entity = self._session.get(ProductEntity, product.id)
         if product_entity is None:
             raise ResourceNotFoundException("Product does not exist.")
 
@@ -51,9 +50,9 @@ class ProductService:
         self._session.commit()
         return product_entity.to_model()
 
-    def delete_user(self, product_id: int) -> None:
+    def delete_product(self, product_id: int) -> None:
         """Deletes one product from the database."""
-        product_entity = self._session.get(product_id)
+        product_entity = self._session.get(ProductEntity, product_id)
         if product_entity is None:
             raise ResourceNotFoundException("Product does not exist.")
 

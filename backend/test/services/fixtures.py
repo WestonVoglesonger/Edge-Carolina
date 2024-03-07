@@ -2,7 +2,9 @@ from typing import Generator
 import pytest
 from sqlalchemy.orm import Session
 from ...services import (
-    ProductService
+    ProductService,
+    JoinService
+
 )
 
 

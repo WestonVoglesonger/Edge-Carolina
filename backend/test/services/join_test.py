@@ -7,7 +7,7 @@ from ...services.exceptions import (
     UserRegistrationException,
 )
 from .fixtures import join_service
-from ..user_data import fake_data_fixture, root, updated_root, user
+from ..user_data import fake_data_fixture, updated_root, user
 
 
 def test_get_users(join_service: JoinService) -> None:

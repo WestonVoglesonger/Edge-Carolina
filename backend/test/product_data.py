@@ -12,7 +12,7 @@ __authors__ = ["Weston Voglesonger"]
 __copyright__ = "Copyright 2023"
 __license__ = "MIT"
 
-product = ProductData(
+product_1 = ProductData(
     id=1,
     name="Example Product",
     description="This is a test product",
@@ -33,7 +33,7 @@ updated_product = ProductData(
     url="https://github.com/example/updated-product"
 )
 
-products = [product]
+products = [product_1]
 
 
 def insert_fake_data(session: Session):

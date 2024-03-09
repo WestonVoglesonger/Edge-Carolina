@@ -1,75 +1,88 @@
 .product-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    width: 50px;
-    max-width: 100%;
-  }
-  
-  .product-card-header {
-    background-color: #f8f8f8;
-    padding: 20px 10px; /* Increased top/bottom padding */
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .product-card-header h3 {
-    margin: 0;
-    font-size: 1.2em;
-  }
-  
-  .product-card-screenshot {
-    text-align: center;
-    padding: 10px;
-    background-color: #f0f0f0;
-  }
-  
-  .product-card-screenshot img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-  }
-  
-  .product-card-content {
-    padding: 10px;
-  }
-  
-  .product-card-content p {
-    margin: 0 0 10px;
-  }
-  
-  .product-card-content a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .product-card-actions {
-    padding: 10px;
-    text-align: right;
-    background-color: #f8f8f8;
-    border-top: 1px solid #ddd;
-  }
-  
-  .product-button {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .product-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .product-card-screenshot a {
-    display: block;
-    transition: transform 0.3s ease;
-  }
-  
-  .product-card-screenshot a:hover {
-    transform: scale(1.05);
-  }
+  max-height: 500px;
+  border-radius: 8px; /* Set border-radius for the entire card */
+}
+
+.product-card-header {
+  background-color: #012f5a;
+  color: #F8F8F8;
+  padding: 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px; /* Add bottom-left border-radius */
+  border-bottom-right-radius: 8px; /* Add bottom-right border-radius */
+  font-family: 'Montserrat', sans-serif;
+}
+
+.product-card-header h3 {
+  margin: 0;
+  font-size: 1.4em;
+  text-align: center;
+}
+
+.product-card-screenshot {
+  text-align: center;
+  padding: 15px;
+  background-color: #F8F8F8;
+  border-bottom-left-radius: 8px; /* Add bottom-left border-radius */
+  border-bottom-right-radius: 8px; /* Add bottom-right border-radius */
+}
+
+.product-card-screenshot img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 8px; /* Set border-radius for the image */
+  transition: transform 0.3s ease-in-out;
+  border: 1px solid gray;
+}
+
+.product-card-screenshot img:hover {
+  transform: scale(1.05);
+}
+
+.product-card-content {
+  position: relative;
+  padding: 15px;
+  font-size: 0.95em;
+  color: #4C4C4C;
+  text-align: center;
+  background-color: #F8F8F8;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100px;
+  border-bottom-left-radius: 8px; /* Add bottom-left border-radius */
+  border-bottom-right-radius: 8px; /* Add bottom-right border-radius */
+  overflow-wrap: break-word; /* Ensure long words can break and wrap to the next line */
+  word-wrap: break-word; /* Legacy property for older browsers */
+  hyphens: auto; /* Automatically add hyphens when breaking words (may not work in all browsers) */
+}
+
+
+.edit-button,
+.delete-button {
+  position: absolute;
+  background-color: transparent;
+  color: gray;
+  border: none;
+  padding: 0;
+  font-size: 1em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.edit-button {
+  bottom: 10px;
+  left: 10px;
+}
+
+.delete-button:hover {
+  color: #E63946;
+}
+
+.edit-button:hover {
+  color: #012f5a;
+}
+
+.delete-button {
+  bottom: 10px;
+  right: 10px;
+}

@@ -53,7 +53,7 @@ body {
 }
 
 .hero-button:hover {
-  background-color: #5df9d2cb;
+  background-color: #4fc8cfcb;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -139,7 +139,7 @@ body {
 }
 
 .join-button:hover {
-  background-color: #5df9d2cb;
+  background-color: #4fc8cfcb;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 

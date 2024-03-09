@@ -1,21 +1,36 @@
 body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
+    /* Light grey background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .container {
     max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background-color: white;
-    color: black;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transform: translateY(250px);
+    width: 1000px;
+    height: auto;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Adjusted padding */
+    font-family: 'Montserrat', sans-serif;
 }
 
+.form-group input[type="text"],
+.form-group textarea {
+    width: calc(100% - 20px); /* Adjusted width */
+    padding: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+
 h2 {
+    color: #0A192F;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -24,37 +39,43 @@ h2 {
     margin-bottom: 15px;
 }
 
-label {
+.form-group label {
     display: block;
+    color: #4C4C4C;
     margin-bottom: 5px;
-    font-weight: bold;
 }
-
-input[type="text"], textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    background-color: white;
-    color: black;
-}
-
-textarea {
+.form-group textarea {
     height: 100px;
     resize: vertical;
 }
 
-button {
-    width: 100%;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
+button[type="submit"] {
+    background-color: #0A192F;
+    color: #F8F8F8;
     border: none;
-    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
 }
 
-button:hover {
-    background-color: #0056b3;
+button[type="submit"]:hover {
+    background-color: #186488;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.char-count {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 0.85em;
+    color: #4C4C4C;
 }

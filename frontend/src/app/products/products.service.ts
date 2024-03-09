@@ -38,7 +38,7 @@ export class ProductService {
     return this.http.post<ProductData>("/api/product", request).pipe(
       catchError((error) => {
         if (error.status === 406) {
-          alert("Registration error: product is already registered.");
+          alert("Product is already registered.");
         }
         return throwError(() => new Error("Registration failed"));
       }),

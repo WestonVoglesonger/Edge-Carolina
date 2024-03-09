@@ -26,6 +26,7 @@ body {
     border: 1px solid #D1D1D1;
     border-radius: 4px;
     font-size: 0.95em;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -47,6 +48,7 @@ h2 {
 .form-group textarea {
     height: 100px;
     resize: vertical;
+    font-family: 'Montserrat', sans-serif;
 }
 
 button[type="submit"] {

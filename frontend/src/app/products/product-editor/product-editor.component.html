@@ -3,19 +3,19 @@
 </head>
 <body>
     <div class="container">
-        <h2>Product Editor</h2>
+        <h2>Product {{ isNew ? "Creator" : "Editor" }}</h2>
         <form [formGroup]="productForm" (ngSubmit)="onSubmitForm()">
             <div class="form-group">
                 <label for="product-name">Product Name:</label>
                 <div class="input-wrapper">
-                    <input type="text" formControlName="name" id="product-name" maxlength="50">
-                    <div class="char-count">{{ name.value?.length || 0 }}/50</div>
+                    <input type="text" formControlName="name" id="product-name" maxlength="45">
+                    <div class="char-count">{{ name.value?.length || 0 }}/45</div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="product-description">Description:</label>
                 <div class="input-wrapper">
-                    <textarea formControlName="description" id="product-description" maxlength="200"></textarea>
+                    <textarea formControlName="description" id="product-description" maxlength="100"></textarea>
                     <div class="char-count">{{ description.value?.length || 0 }}/100</div>
                 </div>
             </div>

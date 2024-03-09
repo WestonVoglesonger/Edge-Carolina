@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { JoinService } from "./join.service";
-import { UserData } from "./user_data";
+import { UserData } from "./userdata";
 
 @Component({
   selector: "app-join",
@@ -9,10 +9,6 @@ import { UserData } from "./user_data";
   styleUrls: ["./join.component.css"],
 })
 export class JoinComponent implements OnInit {
-  public static Route = {
-    path: "join",
-    component: JoinComponent,
-  };
 
   joinForm!: FormGroup;
   isEmailRegistered: boolean = false;

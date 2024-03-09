@@ -9,10 +9,6 @@ import { ProductData } from "./productdata"; // Update the import path as needed
   styleUrls: ["./products.component.css"],
 })
 export class ProductsComponent implements OnInit {
-  public static Route = {
-    path: "products",
-    component: ProductsComponent,
-  };
 
   products: ProductData[] = [];
 
@@ -28,6 +24,6 @@ export class ProductsComponent implements OnInit {
   }
 
   navigateToCreateProduct() {
-    this.router.navigate(["/product/editor"]);
+    this.router.navigate(['products/edit/new']);
   }
 }

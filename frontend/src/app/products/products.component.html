@@ -18,12 +18,6 @@
       <button (click)="navigateToCreateProduct()" class="create-button">
         Create Product
       </button>
-      <div class="product-widgets">
-        <product-widget
-          *ngFor="let product of products"
-          [productData]="product"
-        ></product-widget>
-      </div>
     </section>
   </main>
 

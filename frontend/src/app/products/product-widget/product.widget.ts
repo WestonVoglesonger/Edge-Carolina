@@ -2,7 +2,6 @@ import { Component, Input } from "@angular/core";
 import { ProductService } from "../products.service";
 import { ProductData } from "../productdata";
 import { Router } from "@angular/router";
-import { MatCardModule } from "@angular/material/card";
 
 @Component({
   selector: "product-widget",
@@ -20,7 +19,7 @@ export class ProductWidget {
 
   /** Navigates to the product edit page */
   editProduct() {
-    this.router.navigate(["/product/edit", this.productData.id]);
+    this.router.navigate(["/products/edit", this.productData.id]);
   }
 
   /** Deletes the current product */

@@ -7,11 +7,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./home.component.css"],
 })
 export class HomeComponent {
-  public static Route = {
-    path: "",
-    component: HomeComponent,
-  };
-  constructor(private router: Router) {}
+
+  constructor(public router: Router) {}
 
   navigateToAbout() {
     this.router.navigate(["/about"]);

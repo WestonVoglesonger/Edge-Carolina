@@ -20,6 +20,8 @@ import { NavigationComponent } from "./navigation/navigation.component";
 import { JoinComponent } from "./join/join.component";
 import { ProductsComponent } from "./products/products.component";
 import { ProductWidget } from "./products/product-widget/product.widget";
+import { ProductEditorComponent } from "./products/product-editor/product-editor.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { ProductWidget } from "./products/product-widget/product.widget";
     JoinComponent,
     ProductsComponent,
     ProductWidget,
+    ProductEditorComponent,
     // Add other component declarations here
   ],
   imports: [
@@ -37,6 +40,7 @@ import { ProductWidget } from "./products/product-widget/product.widget";
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    RouterModule,
     ReactiveFormsModule,
 
     // Angular Material Modules

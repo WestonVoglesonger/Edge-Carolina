@@ -4,12 +4,14 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { JoinComponent } from "./join/join.component";
 import { ProductsComponent } from "./products/products.component";
+import { ProductEditorComponent } from "./products/product-editor/product-editor.component";
 
 const routes: Routes = [
-  HomeComponent.Route,
-  AboutComponent.Route,
-  JoinComponent.Route,
-  ProductsComponent.Route,
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'join', component: JoinComponent },
+  { path: 'products/edit/:product_id', component: ProductEditorComponent },
+  { path: 'products', component: ProductsComponent },
 ];
 
 @NgModule({

@@ -18,6 +18,8 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { JoinComponent } from "./join/join.component";
+import { ProductsComponent } from "./products/products.component";
+import { ProductWidget } from "./products/product-widget/product.widget";
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { JoinComponent } from "./join/join.component";
     AboutComponent,
     NavigationComponent,
     JoinComponent,
+    ProductsComponent,
+    ProductWidget,
     // Add other component declarations here
   ],
   imports: [

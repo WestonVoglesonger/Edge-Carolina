@@ -1,0 +1,16 @@
+<div class="product-card">
+  <!-- Header -->
+  <div class="product-card-header">
+    <h3>{{ productData.name }}</h3>
+  </div>
+
+  <div class="product-card-content">
+    <p>{{ productData.description }}</p>
+    <a href="{{ productData.url }}" target="_blank">View Product</a>
+  </div>
+
+  <div class="product-card-actions">
+    <button class="product-button" (click)="editProduct()">Edit</button>
+    <button class="product-button" (click)="deleteProduct()">Delete</button>
+  </div>
+</div>

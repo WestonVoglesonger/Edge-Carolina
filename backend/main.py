@@ -16,6 +16,7 @@ from .services.exceptions import (
     UserRegistrationException,
     UserPermissionException,
     ResourceNotFoundException,
+    ProductRegistrationException,
 )
 
 __authors__ = ["Weston Voglesonger"]
@@ -66,3 +67,8 @@ def resource_not_found_exception_handler(
 @app.exception_handler(UserRegistrationException)
 def user_registration_exception_handler(request: Request, e: UserPermissionException):
     return JSONResponse(status_code=405, content={"message": str(e)})
+
+
+@app.exception_handler(ProductRegistrationException)
+def product_registration_exception_handler(request: Request, e: ProductRegistrationException):
+    return JSONResponse(status_code=406, content={"message": str(e)})

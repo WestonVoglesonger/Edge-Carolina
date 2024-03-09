@@ -76,3 +76,12 @@ body {
   left: 0;
   height: 100vh;
 }
+
+footer {
+  background-color: #011e39;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  width: 100%;
+}

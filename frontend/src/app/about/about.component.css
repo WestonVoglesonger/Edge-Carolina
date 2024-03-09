@@ -62,3 +62,14 @@ body {
   text-align: center;
   font-size: 20px;
 }
+
+
+footer {
+  background-color: #011e39;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

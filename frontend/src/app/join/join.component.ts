@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { JoinService } from "./join.service";
-import { UserData } from "./userdata";
+import { UserData } from "./user_data";
 
 @Component({
   selector: "app-join",
@@ -19,7 +19,7 @@ export class JoinComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public joinService: JoinService,
+    public joinService: JoinService
   ) {}
 
   ngOnInit(): void {

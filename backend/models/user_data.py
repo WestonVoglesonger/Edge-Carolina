@@ -8,4 +8,5 @@ class UserData(BaseModel):
     first_name: str
     last_name: str
     email: str
+    hashed_password: str
     major: str

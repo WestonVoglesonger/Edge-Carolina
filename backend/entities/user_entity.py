@@ -23,6 +23,7 @@ class UserEntity(EntityBase):
     first_name: Mapped[str] = mapped_column(String(50), nullable=False)
     last_name: Mapped[str] = mapped_column(String(50), nullable=False)
     email: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
+    hashed_password: Mapped[str] = mapped_column(String(100), nullable=False)
     major: Mapped[str] = mapped_column(String(50))
 
     # Example relationship (if applicable)
@@ -43,6 +44,7 @@ class UserEntity(EntityBase):
             id=model.id,
             first_name=model.first_name,
             last_name=model.last_name,
+            hashed_password=model.hashed_password,
             email=model.email,
             major=model.major,
         )
@@ -59,5 +61,6 @@ class UserEntity(EntityBase):
             first_name=self.first_name,
             last_name=self.last_name,
             email=self.email,
+            hashed_password=self.hashed_password,
             major=self.major,
         )

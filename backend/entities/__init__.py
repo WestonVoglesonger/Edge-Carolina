@@ -14,7 +14,7 @@ global to a module are available for import from other modules."""
 
 
 from .entity_base import EntityBase
-from .admin_entity import AdminEntity
+from .user_entity import UserEntity
 from .product_entity import ProductEntity
 
 __authors__ = ["Weston Voglesonger", "Kris Jordan"]

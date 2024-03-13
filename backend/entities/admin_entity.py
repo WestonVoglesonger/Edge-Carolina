@@ -36,7 +36,7 @@ class AdminEntity(EntityBase):
     def from_model(cls, model: AdminData) -> Self:
     def from_model(cls, model: AdminData) -> Self:
         """
-        Create a UserEntity from a AdminData model.
+        Create a AdminEntity from a AdminData model.
 
         Args:
             model (AdminData): The model to create the entity from.
@@ -56,10 +56,10 @@ class AdminEntity(EntityBase):
     def to_model(self) -> AdminData:
     def to_model(self) -> AdminData:
         """
-        Create a AdminData model from a UserEntity.
+        Create a AdminData model from a AdminEntity.
 
         Returns:
-            User: A AdminData model for API usage.
+            Admin: A AdminData model for API usage.
         """
         return AdminData(
         return AdminData(

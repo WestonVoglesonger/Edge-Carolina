@@ -3,17 +3,17 @@ from sqlalchemy.orm import Session
 from ..database import db_session
 from ..entities.admin_entity import AdminEntity
 from ..models.admin_data import AdminData
-from ..services.exceptions import (
+from .exceptions import (
     ResourceNotFoundException,
     AdminPermissionException,
     AdminRegistrationException,
 )
 
-class JoinService:
+class AdminService:
     """Backend service that enables direct modification of admin data."""
 
     def __init__(self, session: Session = Depends(db_session)):
-        """Initializes the `JoinService` session"""
+        """Initializes the 'AdminService` session"""
         self._session = session
 
     def get_admins(self) -> list[AdminData]:

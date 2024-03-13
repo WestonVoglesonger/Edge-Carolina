@@ -16,7 +16,7 @@ openapi_tags = {
 }
 
 
-# GET /api/join
+# GET /api/product
 # Gets all products.
 # Expected return type: list[ProductData]
 @api.get("", response_model=list[ProductData], tags=["Product"])

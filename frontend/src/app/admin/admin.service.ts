@@ -26,18 +26,18 @@ export class AdminService {
   /** Refreshes the internal `admins$` observable with the latest admin data from the API. */
   getAdmins() {
     return this.http
-      .get<AdminData[]>("/api/join")
+      .get<AdminData[]>("/api/admin")
       .subscribe((timers) => this.admins.next(timers));
   }
 
   /** Returns a single admin from the API as an observable.  */
   getAdmin(id: number): Observable<AdminData> {
-    return this.http.get<AdminData>("/api/join/" + id);
+    return this.http.get<AdminData>("/api/admin/" + id);
   }
 
   /** Creates a new admin and returns the created admin from the API as an observable. */
   createAdmin(request: AdminData): Observable<AdminData> {
-    return this.http.post<AdminData>("/api/join", request).pipe(
+    return this.http.post<AdminData>("/api/admin", request).pipe(
       catchError((error) => {
         // Handle specific error status codes or messages as needed
         if (error.status === 405) {
@@ -52,16 +52,16 @@ export class AdminService {
 
   /** Edits a admin and returns the edited admin from the API as an observable. */
   editAdmin(request: AdminData): Observable<AdminData> {
-    return this.http.put<AdminData>("/api/join", request);
+    return this.http.put<AdminData>("/api/admin", request);
   }
 
   /** Deletes a admin and returns the delete action as an observable. */
   deleteAdmin(id: number) {
-    return this.http.delete("/api/join/" + id);
+    return this.http.delete("/api/admin/" + id);
   }
 
   /** Checks if the email is already registered and returns a boolean value as an observable. */
   checkEmailIsRegistered(email: string): Observable<boolean> {
-    return this.http.get<boolean>("/api/join", { params: { email } });
+    return this.http.get<boolean>("/api/admin", { params: { email } });
   }
 }

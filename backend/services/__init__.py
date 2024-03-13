@@ -1,2 +1,2 @@
-from .join import JoinService
+from .admin import AdminService
 from .product import ProductService

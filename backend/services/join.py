@@ -1,67 +1,66 @@
 from fastapi import Depends
 from sqlalchemy.orm import Session
 from ..database import db_session
-from ..entities.user_entity import UserEntity
-from ..models.user_data import UserData
+from ..entities.admin_entity import AdminEntity
+from ..models.admin_data import AdminData
 from ..services.exceptions import (
     ResourceNotFoundException,
-    UserPermissionException,
-    UserRegistrationException,
+    AdminPermissionException,
+    AdminRegistrationException,
 )
 
 class JoinService:
-    """Backend service that enables direct modification of user data."""
+    """Backend service that enables direct modification of admin data."""
 
     def __init__(self, session: Session = Depends(db_session)):
         """Initializes the `JoinService` session"""
         self._session = session
 
-    def get_users(self) -> list[UserData]:
-        """Retrieves all users."""
-        query_result = self._session.query(UserEntity).all()
-        return [user_entity.to_model() for user_entity in query_result]
+    def get_admins(self) -> list[AdminData]:
+        """Retrieves all admins."""
+        query_result = self._session.query(AdminEntity).all()
+        return [admin_entity.to_model() for admin_entity in query_result]
 
-    def get_user(self, user_id: int) -> UserData:
-        """Gets one user by an ID."""
-        user_entity = self._session.query(UserEntity).filter(UserEntity.id == user_id).first()
-        if user_entity is None:
-            raise ResourceNotFoundException("User does not exist.")
-        return user_entity.to_model()
+    def get_admin(self, admin_id: int) -> AdminData:
+        """Gets one admin by an ID."""
+        admin_entity = self._session.query(AdminEntity).filter(AdminEntity.id == admin_id).first()
+        if admin_entity is None:
+            raise ResourceNotFoundException("admin does not exist.")
+        return admin_entity.to_model()
 
-    def create_user(self, user: UserData) -> UserData:
-        """Stores a user in the database."""
-        existing_email = self._session.query(UserEntity).filter(UserEntity.email == user.email).first()
+    def create_admin(self, admin: AdminData) -> AdminData:
+        """Stores a admin in the database."""
+        existing_email = self._session.query(AdminEntity).filter(AdminEntity.email == admin.email).first()
         if existing_email:
-            raise UserRegistrationException()
+            raise AdminRegistrationException()
 
-        new_user = UserEntity.from_model(user)
-        self._session.add(new_user)
+        new_admin = AdminEntity.from_model(admin)
+        self._session.add(new_admin)
         self._session.commit()
-        return new_user.to_model()
+        return new_admin.to_model()
 
-    def update_user(self, user: UserData) -> UserData:
-        """Modifies one user in the database."""
-        user_entity = self._session.query(UserEntity).filter(UserEntity.id == user.id).first()
-        if user_entity is None:
-            raise ResourceNotFoundException("User does not exist.")
+    def update_admin(self, admin: AdminData) -> AdminData:
+        """Modifies one admin in the database."""
+        admin_entity = self._session.query(AdminEntity).filter(AdminEntity.id == admin.id).first()
+        if admin_entity is None:
+            raise ResourceNotFoundException("admin does not exist.")
 
-        user_entity.first_name = user.first_name
-        user_entity.last_name = user.last_name
-        user_entity.email = user.email
-        user_entity.major = user.major
+        admin_entity.first_name = admin.first_name
+        admin_entity.last_name = admin.last_name
+        admin_entity.email = admin.email
         self._session.commit()
-        return user_entity.to_model()
+        return admin_entity.to_model()
 
-    def delete_user(self, user_id: int) -> None:
-        """Deletes one user from the database."""
-        user_entity = self._session.query(UserEntity).filter(UserEntity.id == user_id).first()
-        if user_entity is None:
-            raise ResourceNotFoundException("User does not exist.")
+    def delete_admin(self, admin_id: int) -> None:
+        """Deletes one admin from the database."""
+        admin_entity = self._session.query(AdminEntity).filter(AdminEntity.id == admin_id).first()
+        if admin_entity is None:
+            raise ResourceNotFoundException("admin does not exist.")
 
-        self._session.delete(user_entity)
+        self._session.delete(admin_entity)
         self._session.commit()
 
     def check_email_registered(self, email: str) -> bool:
         """Checks if an email is already registered."""
-        existing_email = self._session.query(UserEntity).filter(UserEntity.email == email).first()
+        existing_email = self._session.query(AdminEntity).filter(AdminEntity.email == email).first()
         return existing_email is not None

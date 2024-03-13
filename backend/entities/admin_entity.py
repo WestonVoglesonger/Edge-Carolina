@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import Self
 
-from  backend.models.user_data import UserData
+from  backend.models.admin_data import AdminData
 from .entity_base import EntityBase
 
 __authors__ = ["Weston Voglesonger"]
@@ -11,10 +11,10 @@ __copyright__ = "Copyright 2023"
 __license__ = "MIT"
 
 
-class UserEntity(EntityBase):
-    """Serves as the database model schema defining the shape of the `UserData` table"""
+class AdminEntity(EntityBase):
+    """Serves as the database model schema defining the shape of the `AdminData` table"""
 
-    __tablename__ = "user"
+    __tablename__ = "admin"
     __table_args__ = (
         UniqueConstraint('email'),
     )
@@ -24,18 +24,17 @@ class UserEntity(EntityBase):
     last_name: Mapped[str] = mapped_column(String(50), nullable=False)
     email: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
     hashed_password: Mapped[str] = mapped_column(String(100), nullable=False)
-    major: Mapped[str] = mapped_column(String(50))
 
     # Example relationship (if applicable)
     # posts = relationship("PostEntity", back_populates="user")
 
     @classmethod
-    def from_model(cls, model: UserData) -> Self:
+    def from_model(cls, model: AdminData) -> Self:
         """
-        Create a UserEntity from a UserData model.
+        Create a UserEntity from a AdminData model.
 
         Args:
-            model (UserData): The model to create the entity from.
+            model (AdminData): The model to create the entity from.
 
         Returns:
             Self: The entity (not yet persisted).
@@ -46,21 +45,19 @@ class UserEntity(EntityBase):
             last_name=model.last_name,
             hashed_password=model.hashed_password,
             email=model.email,
-            major=model.major,
         )
 
-    def to_model(self) -> UserData:
+    def to_model(self) -> AdminData:
         """
-        Create a UserData model from a UserEntity.
+        Create a AdminData model from a UserEntity.
 
         Returns:
-            User: A UserData model for API usage.
+            User: A AdminData model for API usage.
         """
-        return UserData(
+        return AdminData(
             id=self.id,
             first_name=self.first_name,
             last_name=self.last_name,
             email=self.email,
             hashed_password=self.hashed_password,
-            major=self.major,
         )

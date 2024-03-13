@@ -9,13 +9,12 @@ import { UserData } from "./userdata";
   styleUrls: ["./join.component.css"],
 })
 export class JoinComponent implements OnInit {
-
   joinForm!: FormGroup;
   isEmailRegistered: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-    public joinService: JoinService
+    public joinService: JoinService,
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +24,7 @@ export class JoinComponent implements OnInit {
       collegeYear: ["", Validators.required],
       major: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, Validators.minLength(8)]],
     });
 
     this.joinForm.get("email")?.valueChanges.subscribe((value) => {
@@ -47,6 +47,7 @@ export class JoinComponent implements OnInit {
           last_name: this.joinForm.value.lastName,
           major: this.joinForm.value.major,
           email: this.joinForm.value.email,
+          password: this.joinForm.value.password,
         })
         .subscribe((user: UserData) => {
           alert("User created:");

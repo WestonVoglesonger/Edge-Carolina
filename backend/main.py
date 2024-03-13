@@ -14,8 +14,8 @@ from .api import (
 )
 
 from .services.exceptions import (
-    UserRegistrationException,
-    UserPermissionException,
+    AdminRegistrationException,
+    AdminPermissionException,
     ResourceNotFoundException,
     ProductRegistrationException,
 )
@@ -55,8 +55,8 @@ app.mount("/", static_files.StaticFileMiddleware(directory=Path("./static")))
 
 
 # Add application-wide exception handling middleware for commonly encountered API Exceptions
-@app.exception_handler(UserPermissionException)
-def permission_exception_handler(request: Request, e: UserPermissionException):
+@app.exception_handler(AdminPermissionException)
+def permission_exception_handler(request: Request, e: AdminPermissionException):
     return JSONResponse(status_code=403, content={"message": str(e)})
 
 
@@ -66,8 +66,8 @@ def resource_not_found_exception_handler(
 ):
     return JSONResponse(status_code=404, content={"message": str(e)})
 
-@app.exception_handler(UserRegistrationException)
-def user_registration_exception_handler(request: Request, e: UserPermissionException):
+@app.exception_handler(AdminRegistrationException)
+def admin_registration_exception_handler(request: Request, e: AdminPermissionException):
     return JSONResponse(status_code=405, content={"message": str(e)})
 
 

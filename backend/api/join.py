@@ -4,119 +4,119 @@ Productivity routes are used to create, retrieve, and update Pomodoro timers."""
 
 from fastapi import APIRouter, Depends
 
-from backend.models.user_data import UserData
-from backend.services.exceptions import UserRegistrationException
+from backend.models.admin_data import AdminData
+from backend.services.exceptions import AdminRegistrationException
 from ..services.join import JoinService
 
 
 api = APIRouter(prefix="/api/join")
 openapi_tags = {
     "name": "Join",
-    "description": "Create, update, delete, and retrieve user data.",
+    "description": "Create, update, delete, and retrieve admin data.",
 }
 
 
 # GET /api/join
-# Gets all users.
-# Expected return type: list[UserData]
-@api.get("", response_model=list[UserData], tags=["Join"])
-def get_users(
+# Gets all admins.
+# Expected return type: list[AdminData]
+@api.get("", response_model=list[AdminData], tags=["Join"])
+def get_admins(
     join_service: JoinService = Depends(),
-) -> list[UserData]:
+) -> list[AdminData]:
     """
-    Get all users.
+    Get all admins.
 
     Parameters:
         join_service: a valid JoinService
 
     Returns:
-        list[UserData]: All users
+        list[AdminData]: All admins
     """
 
-    # Return all users
-    return join_service.get_users()
+    # Return all admins
+    return join_service.get_admins()
 
 
 # GET /api/join/{id}
-# Get a user by its ID.
-# Expected return type: UserData
-@api.get("/{id}", response_model=UserData, tags=["Join"])
-def get_user(
+# Get a admin by its ID.
+# Expected return type: AdminData
+@api.get("/{id}", response_model=AdminData, tags=["Join"])
+def get_admin(
     id: int,
     join_service: JoinService = Depends(),
-) -> UserData:
+) -> AdminData:
     """
-    Get user.
+    Get admin.
 
     Parameters:
-        id: ID of the user to get
+        id: ID of the admin to get
         join_service: a valid JoinService
     """
 
-    return join_service.get_user(id)
+    return join_service.get_admin(id)
 
 
 # POST /api/join/
-# Creates a new user.
-# Expected return type: UserData
-@api.post("", response_model=UserData, tags=["Join"])
-def create_user(
-    user: UserData,
+# Creates a new admin.
+# Expected return type: AdminData
+@api.post("", response_model=AdminData, tags=["Join"])
+def create_admin(
+    admin: AdminData,
     join_service: JoinService = Depends(),
-) -> UserData:
+) -> AdminData:
     """
-    Create user.
+    Create admin.
 
     Parameters:
-        user: a valid user model
+        admin: a valid admin model
         join_service: a valid JoinService
 
     Returns:
-        User: Created user
+        admin: Created admin
     """
 
-    return join_service.create_user(user)
+    return join_service.create_admin(admin)
 
 
 # PUT /api/join
-# Updates a user.
-# Expected return type: UserData
-@api.put("", response_model=UserData, tags=["Join"])
-def update_user(
-    user: UserData,
+# Updates a admin.
+# Expected return type: AdminData
+@api.put("", response_model=AdminData, tags=["Join"])
+def update_admin(
+    admin: AdminData,
     join_service: JoinService = Depends(),
-) -> UserData:
+) -> AdminData:
     """
-    Update user.
+    Update admin.
 
     Parameters:
-        user: a valid UserData model
-        user_service: a valid JoinService
+        admin: a valid AdminData model
+        admin_service: a valid JoinService
 
     Returns:
-        UserData: Updated user
+        AdminData: Updated admin
     """
 
-    return join_service.update_user(user)
+    return join_service.update_admin(admin)
 
 
 # DELETE /api/productivity/{id}
-# Deletes a user.
-# Expected return type: UserData
+# Deletes a admin.
+# Expected return type: AdminData
 @api.delete("/{id}", response_model=None, tags=["Join"])
-def delete_user(
+def delete_admin(
     id: int,
     join_service: JoinService = Depends(),
-) -> UserData:
+) -> AdminData:
     """
-    Delete user.
+    Delete admin.
 
     Parameters:
-        id: ID of the user to delete
+        id: ID of the admin to delete
         join_service: a valid JoinService
     """
 
-    return join_service.delete_user(id)
+    return join_service.delete_admin(id) # type: ignore
 
 @api.get("/check-email/{email}", response_model=bool)
 def check_email_registered(email: str, join_service: JoinService = Depends()) -> bool:

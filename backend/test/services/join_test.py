@@ -1,58 +1,57 @@
 import pytest
 from ...services.join import JoinService
-from ...entities.user_entity import UserEntity
-from ...models.user_data import UserData
+from ...entities.admin_entity import AdminEntity
+from ...models.admin_data import AdminData
 from ...services.exceptions import (
     ResourceNotFoundException,
-    UserRegistrationException,
+    AdminRegistrationException,
 )
 from .fixtures import join_service
-from ..user_data import fake_data_fixture, updated_root, user
+from ..admin_data import fake_data_fixture, updated_root, admin
 
 
-def test_get_users(join_service: JoinService) -> None:
-    users = join_service.get_users()
-    assert len(users) == 1 
+def test_get_admins(join_service: JoinService) -> None:
+    admins = join_service.get_admins()
+    assert len(admins) == 1 
     
-def test_get_user(join_service: JoinService) -> None:
-    user_id = 1
-    user = join_service.get_user(user_id)
-    assert user.id == user_id
-    assert user.first_name == "root"
-    assert user.last_name == "root"
-    assert user.email == "root@unc.edu"
-    assert user.major == "math"
+def test_get_admin(join_service: JoinService) -> None:
+    admin_id = 1
+    admin = join_service.get_admin(admin_id)
+    assert admin.id == admin_id
+    assert admin.first_name == "root"
+    assert admin.last_name == "root"
+    assert admin.email == "root@unc.edu"
+    assert admin.hashed_password == "password"
 
-def test_create_user(join_service: JoinService) -> None:
-    created_user = join_service.create_user(user)
-    assert created_user.email == user.email
+def test_create_admin(join_service: JoinService) -> None:
+    created_admin = join_service.create_admin(admin)
+    assert created_admin.email == admin.email
 
-def test_create_user_existing_email(join_service: JoinService) -> None:
-    with pytest.raises(UserRegistrationException):
-        join_service.create_user(updated_root)
+def test_create_admin_existing_email(join_service: JoinService) -> None:
+    with pytest.raises(AdminRegistrationException):
+        join_service.create_admin(updated_root)
 
-def test_update_user(join_service: JoinService) -> None:
-    updated_user = join_service.update_user(updated_root)
-    assert updated_user.first_name == "updated"
-    assert updated_user.last_name == "updated"
-    assert updated_user.major == "updated"
+def test_update_admin(join_service: JoinService) -> None:
+    updated_admin = join_service.update_admin(updated_root)
+    assert updated_admin.first_name == "updated"
+    assert updated_admin.last_name == "updated"
 
-def test_update_user_non_existent(join_service: JoinService) -> None:
+def test_update_admin_non_existent(join_service: JoinService) -> None:
     with pytest.raises(ResourceNotFoundException):
-        join_service.update_user(user)
+        join_service.update_admin(admin)
 
-def test_delete_user(join_service: JoinService) -> None:
-    join_service.delete_user(1)
+def test_delete_admin(join_service: JoinService) -> None:
+    join_service.delete_admin(1)
     with pytest.raises(ResourceNotFoundException):
-        join_service.get_user(1)
+        join_service.get_admin(1)
 
-def test_delete_user_non_existent(join_service: JoinService) -> None:
+def test_delete_admin_non_existent(join_service: JoinService) -> None:
     with pytest.raises(ResourceNotFoundException):
-        join_service.delete_user(999)
+        join_service.delete_admin(999)
 
-def test_get_user_by_id_not_found(join_service: JoinService) -> None:
+def test_get_admin_by_id_not_found(join_service: JoinService) -> None:
     with pytest.raises(ResourceNotFoundException):
-        join_service.get_user(999)
+        join_service.get_admin(999)
 
 def test_check_email_registered(join_service: JoinService) -> None:
     assert join_service.check_email_registered("root@unc.edu") is True

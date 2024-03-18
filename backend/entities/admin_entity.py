@@ -24,6 +24,10 @@ class AdminEntity(EntityBase):
     last_name: Mapped[str] = mapped_column(String(50), nullable=False)
     email: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
     hashed_password: Mapped[str] = mapped_column(String(100), nullable=False)
+<<<<<<< HEAD:backend/entities/admin_entity.py
+=======
+    major: Mapped[str] = mapped_column(String(50))
+>>>>>>> 90357f1 (Added password field to user_data and password column to user_entity.):backend/entities/user_entity.py
 
     # Example relationship (if applicable)
     # posts = relationship("PostEntity", back_populates="admin")
@@ -60,4 +64,8 @@ class AdminEntity(EntityBase):
             last_name=self.last_name,
             email=self.email,
             hashed_password=self.hashed_password,
+<<<<<<< HEAD:backend/entities/admin_entity.py
+=======
+            major=self.major,
+>>>>>>> 90357f1 (Added password field to user_data and password column to user_entity.):backend/entities/user_entity.py
         )

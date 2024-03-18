@@ -12,7 +12,6 @@ This module serves two purposes:
 When adding a new entity to the application be sure to import it here. As a reminder, all identifiers 
 global to a module are available for import from other modules."""
 
-
 from .entity_base import EntityBase
 from .admin_entity import AdminEntity
 from .product_entity import ProductEntity
